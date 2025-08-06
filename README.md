@@ -1,16 +1,36 @@
-# vedio_call
+# 📞 Video Call App with Flutter & Stream
 
-A new Flutter project.
+A modern and interactive video calling application built using **Flutter** and powered by **Stream Video SDK**. Users can join video calls by simply entering a call ID and username.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 Join calls with unique Call IDs.
+- 🧑‍🤝‍🧑 Support for multiple users per call.
+- 🎥 Real-time video & audio communication using Stream SDK.
+- 🌈 Animated UI with Lottie.
+- 📱 Responsive & mobile-friendly design.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+https://github.com/Amr-3li/video-call-app/blob/main/WhatsApp%20Image%202025-08-06%20at%2012.54.52_1cdba2ac.jpg
+---
+
+## 🛠️ Tech Stack
+
+- **Flutter**
+- **Stream Video SDK**
+- **Lottie**
+- **Dart**
+
+---
+
+## 📦 Installation
+
+1. **Clone the repo:**
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
