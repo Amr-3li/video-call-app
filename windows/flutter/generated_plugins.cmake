@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
   firebase_core
   permission_handler_windows
+  rive_common
   stream_webrtc_flutter
 )
 
