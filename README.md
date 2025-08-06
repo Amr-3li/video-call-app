@@ -16,7 +16,8 @@ A modern and interactive video calling application built using **Flutter** and p
 
 ## 📸 Screenshots
 
-https://github.com/Amr-3li/video-call-app/blob/main/WhatsApp%20Image%202025-08-06%20at%2012.54.52_1cdba2ac.jpg
+ ![alt text](<WhatsApp Image 2025-08-06 at 12.54.52_1cdba2ac.jpg>)
+ ![alt text](<WhatsApp Image 2025-08-06 at 13.00.44_fc218c66.jpg>)
 ---
 
 ## 🛠️ Tech Stack
