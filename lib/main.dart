@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:stream_video/stream_video.dart';
+import 'package:vedio_call/core/constants/end_points.dart';
 import 'package:vedio_call/features/video_call/presentation/view/pages/video_call_home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   final client = StreamVideo(
-    'mmhfdzb5evj2',
+    EndPoints.abiKey,
     user: User.regular(
-      userId: 'Familiar_Canopy',
-      role: 'admin',
-      name: 'John Doe',
+      userId: EndPoints.userId,
+      role: EndPoints.userRole,
+      name: EndPoints.userName,
     ),
-    userToken:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Byb250by5nZXRzdHJlYW0uaW8iLCJzdWIiOiJ1c2VyL0ZhbWlsaWFyX0Nhbm9weSIsInVzZXJfaWQiOiJGYW1pbGlhcl9DYW5vcHkiLCJ2YWxpZGl0eV9pbl9zZWNvbmRzIjo2MDQ4MDAsImlhdCI6MTc1NDQxMzQ0OSwiZXhwIjoxNzU1MDE4MjQ5fQ.BPquv0fmz-Za3ZELBWRutxHQtmMdXTf8tiwtfW7ls-I',
+    userToken: EndPoints.userToken,
   );
 
   runApp(const MyApp());

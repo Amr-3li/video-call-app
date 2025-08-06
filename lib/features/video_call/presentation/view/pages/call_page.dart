@@ -15,7 +15,6 @@ class _CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     return StreamCallContainer(
       call: widget.call,
-
       onBackPressed: () {
         widget.call.end();
         Navigator.pop(context);

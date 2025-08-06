@@ -1,11 +1,10 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stream_video/stream_video.dart';
-import 'package:vedio_call/core/constants/animations/animations.dart';
+import 'package:vedio_call/core/constants/animations.dart';
+import 'package:vedio_call/core/constants/strings.dart';
 import 'package:vedio_call/features/video_call/presentation/view/pages/call_page.dart';
 import 'package:vedio_call/features/video_call/presentation/view/widgets/custom_buttom.dart';
 import 'package:vedio_call/features/video_call/presentation/view/widgets/custum_TextField.dart';
@@ -71,7 +70,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
               const Spacer(),
               Text.rich(
                 TextSpan(
-                  text: 'Video ',
+                  text: Strings.video,
                   style: TextStyle(
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold,
@@ -79,7 +78,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: 'Call',
+                      text: Strings.call,
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
@@ -93,7 +92,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
-                  'You can create a call eith group by creating a call id and share the call id with your friend to injoi by the meating',
+                  Strings.brief,
                   style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold,
@@ -116,7 +115,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                     children: [
                       CustomTextField(
                         callIdController: _userNameController,
-                        lable: "User Name",
+                        lable: Strings.userName,
                       ),
                       SizedBox(height: 15.0),
                       Row(
@@ -125,7 +124,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                             flex: 3,
                             child: CustomTextField(
                               callIdController: _callIdController,
-                              lable: "User Name",
+                              lable: Strings.callId,
                             ),
                           ),
                           SizedBox(width: 10.0),
@@ -138,7 +137,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                                       _isGeneratingId = true;
                                       _generateCallId();
                                     },
-                                    text: 'Generate',
+                                    text: Strings.generate,
                                   ),
                                 ),
                         ],
@@ -151,7 +150,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                             try {
                               var call = StreamVideo.instance.makeCall(
                                 callType: StreamCallType(),
-                                id: _callId,
+                                id: _callIdController.text,
                               );
 
                               await call.getOrCreate();
@@ -164,7 +163,6 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                                 ),
                               );
                             } catch (e) {
-                              debugPrint('Error joining or creating call: $e');
                               debugPrint(e.toString());
                             }
                           } else {
