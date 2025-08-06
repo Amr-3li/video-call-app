@@ -13,12 +13,27 @@ class CallPage extends StatefulWidget {
 class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
-    return StreamCallContainer(
-      call: widget.call,
-      onBackPressed: () {
-        widget.call.end();
-        Navigator.pop(context);
-      },
+    return Theme(
+      data: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.black,
+        colorScheme: ColorScheme.dark(
+          primary: Colors.greenAccent,
+          secondary: Colors.blueAccent,
+          surface: Colors.grey[850]!,
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
+        ),
+      ),
+      child: StreamCallContainer(
+        call: widget.call,
+        onBackPressed: () {
+          widget.call.end();
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 }
