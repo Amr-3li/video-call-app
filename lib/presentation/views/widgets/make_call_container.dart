@@ -20,14 +20,21 @@ class MakeCallContainer extends StatelessWidget {
       children: [
         const Spacer(),
         HomeInformations(),
-
         const Spacer(),
         Container(
           padding: EdgeInsets.all(15.0),
           margin: EdgeInsets.all(20.0),
+
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 0, 50, 111),
             borderRadius: BorderRadius.circular(20.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 10.0,
+                offset: const Offset(0, 5),
+              ),
+            ],
           ),
           child: Form(
             key: _formKey,

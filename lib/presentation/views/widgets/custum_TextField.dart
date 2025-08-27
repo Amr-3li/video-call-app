@@ -27,7 +27,6 @@ class CustomTextField extends StatelessWidget {
       ),
       controller: _callIdController,
       decoration: InputDecoration(
-        fillColor: Colors.white,
         labelStyle: TextStyle(color: const Color.fromARGB(255, 145, 145, 145)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
@@ -35,12 +34,12 @@ class CustomTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
-          borderSide: const BorderSide(color: Colors.white),
+          borderSide: const BorderSide(color: Colors.white12),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(20.0),
+        //   borderSide: const BorderSide(color: Colors.white),
+        // ),
         labelText: lable,
         floatingLabelStyle: const TextStyle(color: Colors.white),
       ),

@@ -11,11 +11,11 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: 0,
         padding: EdgeInsets.zero,
-        backgroundColor: Colors.indigo[900],
+        backgroundColor: const Color.fromARGB(160, 149, 1, 212),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        fixedSize: Size(double.infinity, 30),
+        fixedSize: Size(MediaQuery.of(context).size.width / 2, 30),
       ),
       child: FittedBox(
         child: Text(
