@@ -5,9 +5,10 @@ import 'package:lottie/lottie.dart';
 import 'package:stream_video/stream_video.dart';
 import 'package:vedio_call/core/constants/animations.dart';
 import 'package:vedio_call/core/constants/strings.dart';
-import 'package:vedio_call/features/video_call/presentation/view/pages/call_page.dart';
-import 'package:vedio_call/features/video_call/presentation/view/widgets/custom_buttom.dart';
-import 'package:vedio_call/features/video_call/presentation/view/widgets/custum_TextField.dart';
+import 'package:vedio_call/data/services/make_call_impl.dart';
+import 'package:vedio_call/presentation/views/pages/call_page.dart';
+import 'package:vedio_call/presentation/views/widgets/custom_buttom.dart';
+import 'package:vedio_call/presentation/views/widgets/custum_TextField.dart';
 
 class VideoCallHomeScreen extends StatefulWidget {
   const VideoCallHomeScreen({super.key});
@@ -128,18 +129,15 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                             ),
                           ),
                           SizedBox(width: 10.0),
-                          _isGeneratingId
-                              ? CircularProgressIndicator()
-                              : Expanded(
-                                  flex: 1,
-                                  child: CustomButton(
-                                    onPressed: () {
-                                      _isGeneratingId = true;
-                                      _generateCallId();
-                                    },
-                                    text: Strings.generate,
-                                  ),
-                                ),
+                          Expanded(
+                            flex: 1,
+                            child: CustomButton(
+                              onPressed: () async {
+                                MakeCallImpl().generateCallId();
+                              },
+                              text: Strings.generate,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 15.0),
@@ -152,9 +150,7 @@ class _VideoCallHomeScreenState extends State<VideoCallHomeScreen> {
                                 callType: StreamCallType(),
                                 id: _callIdController.text,
                               );
-
                               await call.getOrCreate();
-
                               // Created ahead
                               Navigator.push(
                                 context,

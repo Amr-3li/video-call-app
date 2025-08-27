@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stream_video/stream_video.dart';
 import 'package:vedio_call/core/constants/end_points.dart';
-import 'package:vedio_call/features/video_call/presentation/view/pages/video_call_home_page.dart';
+import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final client = StreamVideo(
+  StreamVideo(
     EndPoints.abiKey,
     user: User.regular(
       userId: EndPoints.userId,
