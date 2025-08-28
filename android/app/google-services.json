@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1033471969534",
+    "project_id": "weighty-droplet-441008-k9",
+    "storage_bucket": "weighty-droplet-441008-k9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033471969534:android:64e779b830b53e663c3daf",
+        "android_client_info": {
+          "package_name": "com.example.vedio_call"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033471969534-ls7lvoo9l9lkurju36ojr8snuako13a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDc_Jnso2iOu0jSdmzk5ID_CrF4nDdb8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033471969534-ls7lvoo9l9lkurju36ojr8snuako13a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
