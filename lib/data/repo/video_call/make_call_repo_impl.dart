@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:stream_video/stream_video.dart' show Call;
 import 'package:vedio_call/core/errors/failures.dart'
     show Failure, ServerFailure;
-import 'package:vedio_call/data/repo/make_call_repo.dart';
-import 'package:vedio_call/data/services/make_call.dart';
+import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
+import 'package:vedio_call/data/services/video_call/make_call.dart';
 
 class MakeCallRepoImpl implements MakeCallRepo {
   final MakeCall makeCallService;

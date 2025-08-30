@@ -5,14 +5,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream_video/stream_video.dart';
 import 'package:vedio_call/core/constants/end_points.dart';
 import 'package:vedio_call/core/dapendency_injection/get_it.dart';
-import 'package:vedio_call/data/repo/make_call_repo.dart';
+import 'package:vedio_call/core/services/sharedpreference_singelton.dart';
+import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
+import 'package:vedio_call/firebase_options.dart';
 import 'package:vedio_call/presentation/cubit/make_call/make_call_cubit.dart';
 import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupGetIt();
+  SharedPreferenceSingelton.init();
+
   StreamVideo(
     EndPoints.abiKey,
     user: User.regular(

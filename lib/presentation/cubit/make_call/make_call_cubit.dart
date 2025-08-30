@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stream_video/stream_video.dart';
 
-import 'package:vedio_call/data/repo/make_call_repo.dart';
+import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
 
 part 'make_call_state.dart';
 

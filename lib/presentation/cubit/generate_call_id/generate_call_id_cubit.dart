@@ -2,7 +2,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:vedio_call/data/repo/make_call_repo.dart';
+import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
 
 part 'generate_call_id_state.dart';
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vedio_call/core/constants/strings.dart';
-import 'package:vedio_call/data/services/make_call_impl.dart';
+import 'package:vedio_call/data/services/auth/auth_services_impl.dart';
+import 'package:vedio_call/data/services/video_call/make_call_impl.dart';
 import 'package:vedio_call/presentation/cubit/make_call/make_call_cubit.dart';
 import 'package:vedio_call/presentation/views/widgets/custom_buttom.dart';
 import 'package:vedio_call/presentation/views/widgets/custum_TextField.dart';
@@ -60,6 +61,7 @@ class MakeCallContainer extends StatelessWidget {
                       child: CustomButton(
                         onPressed: () async {
                           MakeCallImpl().generateCallId();
+                          await AuthServicesImpl().signInWithGoogle();
                         },
                         text: Strings.generate,
                       ),

@@ -3,7 +3,7 @@
 import 'dart:math';
 
 import 'package:stream_video/stream_video.dart';
-import 'package:vedio_call/data/services/make_call.dart';
+import 'package:vedio_call/data/services/video_call/make_call.dart';
 
 class MakeCallImpl implements MakeCall {
   @override
@@ -31,7 +31,7 @@ class MakeCallImpl implements MakeCall {
 
   @override
   Future<String> generateCallId() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 500));
     const chars =
         'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     final rand = Random();
