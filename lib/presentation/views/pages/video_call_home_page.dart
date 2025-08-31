@@ -17,7 +17,7 @@ class VideoCallHomeScreen extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: LottieBuilder.asset(
-              Animations.backgroundAnimation,
+              Animations.background,
               fit: BoxFit.fitHeight,
               repeat: true,
               reverse: true,
@@ -27,7 +27,7 @@ class VideoCallHomeScreen extends StatelessWidget {
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
             child: Container(
-              color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
+              color: const Color.fromARGB(255, 201, 201, 201).withOpacity(0.15),
             ),
           ),
           MakeCallContainer(),

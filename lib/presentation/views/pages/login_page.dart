@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vedio_call/core/services/animation_of_routs.dart';
 import 'package:vedio_call/presentation/views/pages/sign_up_page.dart';
+import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 import 'package:vedio_call/presentation/views/widgets/background_app.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/input_iext_widget.dart';
@@ -75,7 +76,17 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                ButtonWidget(text: "Sign In", onPressed: () {}),
+                ButtonWidget(
+                  text: "Sign In",
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        PageAnimations.slide(const VideoCallHomeScreen()),
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(height: 15),
                 const Text(
                   "Continue with",

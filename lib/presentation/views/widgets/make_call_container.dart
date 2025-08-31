@@ -27,13 +27,18 @@ class MakeCallContainer extends StatelessWidget {
           margin: EdgeInsets.all(20.0),
 
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 50, 111),
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 10.0,
-                offset: const Offset(0, 5),
+                color: const Color.fromARGB(
+                  255,
+                  139,
+                  139,
+                  139,
+                ).withOpacity(0.3),
+                blurRadius: 3.0,
+                offset: const Offset(0, 2),
               ),
             ],
           ),

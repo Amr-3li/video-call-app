@@ -1,16 +1,12 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream_video/stream_video.dart';
 import 'package:vedio_call/core/constants/end_points.dart';
 import 'package:vedio_call/core/dapendency_injection/get_it.dart';
 import 'package:vedio_call/core/services/sharedpreference_singelton.dart';
-import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
 import 'package:vedio_call/firebase_options.dart';
-import 'package:vedio_call/presentation/cubit/make_call/make_call_cubit.dart';
-import 'package:vedio_call/presentation/views/pages/login_page.dart';
-import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
+import 'package:vedio_call/presentation/views/pages/splash_screan.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,17 +33,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: LoginPage(),
-      // home: BlocProvider(
-      //   create: (context) => MakeCallCubit(getIt<MakeCallRepo>()),
-      //   child: VideoCallHomeScreen(),
-      // ),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScrean());
   }
 }

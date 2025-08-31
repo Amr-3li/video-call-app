@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vedio_call/presentation/views/pages/login_page.dart';
 import 'package:vedio_call/presentation/views/widgets/background_app.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/input_iext_widget.dart';
-import 'package:vedio_call/presentation/views/widgets/other_register.dart';
 import 'package:vedio_call/presentation/views/widgets/row_appbaer.dart';
 import 'package:vedio_call/presentation/views/widgets/user_name_data.dart';
 

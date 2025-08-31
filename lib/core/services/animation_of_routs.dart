@@ -23,11 +23,12 @@ class PageAnimations {
     Offset begin = const Offset(1.0, 0.0),
   }) {
     return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 800),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         final curvedAnimation = CurvedAnimation(
           parent: animation,
-          curve: Curves.easeInOut,
+          curve: Curves.easeInQuart,
         );
 
         final tween = Tween(begin: begin, end: Offset.zero);
@@ -45,6 +46,7 @@ class PageAnimations {
   }) {
     return PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 800),
+      reverseTransitionDuration: const Duration(milliseconds: 500),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         final curvedAnimation = CurvedAnimation(
