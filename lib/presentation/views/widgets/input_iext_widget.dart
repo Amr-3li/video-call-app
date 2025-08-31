@@ -41,15 +41,8 @@ class InputTextWidget extends StatelessWidget {
         ),
         filled: true,
         fillColor: const Color.fromARGB(255, 255, 255, 255),
-        suffixIcon:
-            icon ??
-            const IconButton(
-              onPressed: null,
-              icon: Icon(
-                Icons.remove_red_eye_outlined,
-                color: Colors.transparent,
-              ),
-            ),
+        suffixIcon: icon ?? const SizedBox(),
+
         hintText: hintText,
         hintStyle: const TextStyle(
           color: Color.fromARGB(80, 0, 0, 0),

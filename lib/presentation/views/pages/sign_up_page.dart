@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vedio_call/presentation/views/pages/login_page.dart';
+import 'package:vedio_call/presentation/views/widgets/background_app.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/input_iext_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/other_register.dart';
@@ -26,9 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+        child: BackgroundApp(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,13 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 20),
                 ButtonWidget(text: "Sign Up", onPressed: () {}),
                 const SizedBox(height: 15),
-                const Text(
-                  "Continue with",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const SizedBox(height: 15),
-                const OtherRegister(),
-                const SizedBox(height: 30),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -120,12 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ),
-                        );
+                        Navigator.pop(context);
                       },
                       child: const Text(
                         "Sign in",

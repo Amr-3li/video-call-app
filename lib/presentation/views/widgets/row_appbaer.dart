@@ -10,7 +10,7 @@ class RowAppbar extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 26,
+            fontSize: 22,
             color: Colors.white,
 
             fontWeight: FontWeight.w600,

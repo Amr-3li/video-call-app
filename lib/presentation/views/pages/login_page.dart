@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vedio_call/core/services/animation_of_routs.dart';
 import 'package:vedio_call/presentation/views/pages/sign_up_page.dart';
+import 'package:vedio_call/presentation/views/widgets/background_app.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/input_iext_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/other_register.dart';
@@ -20,21 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.009, 0.25, 0.5, 0.5],
-            colors: [
-              Color.fromARGB(255, 1, 9, 101),
-              Color.fromARGB(255, 255, 255, 255),
-              Color.fromARGB(255, 255, 255, 255),
-              Color.fromARGB(255, 255, 255, 255),
-            ],
-          ),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+      body: BackgroundApp(
         child: SingleChildScrollView(
           child: Form(
             key: formKey,
@@ -107,10 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const Hero(tag: "Sign Up", child: SignUpPage()),
-                          ),
+                          PageAnimations.routeTransition(const SignUpPage()),
                         );
                       },
                       child: const Text(
