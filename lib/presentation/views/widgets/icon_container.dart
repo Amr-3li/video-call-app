@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class IconContainer extends StatelessWidget {
-  const IconContainer({super.key, required this.icon});
-  final Icon icon;
+  const IconContainer({super.key, required this.icon, this.onTap});
+  final String icon;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(),
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color.fromARGB(100, 129, 129, 129)),
-      ),
-      child: icon,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(height: 40, width: 40, child: SvgPicture.asset(icon)),
     );
   }
 }
