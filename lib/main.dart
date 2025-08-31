@@ -9,6 +9,7 @@ import 'package:vedio_call/core/services/sharedpreference_singelton.dart';
 import 'package:vedio_call/data/repo/video_call/make_call_repo.dart';
 import 'package:vedio_call/firebase_options.dart';
 import 'package:vedio_call/presentation/cubit/make_call/make_call_cubit.dart';
+import 'package:vedio_call/presentation/views/pages/login_page.dart';
 import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 
 Future<void> main() async {
@@ -42,10 +43,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BlocProvider(
-        create: (context) => MakeCallCubit(getIt<MakeCallRepo>()),
-        child: VideoCallHomeScreen(),
-      ),
+      home: LoginPage(),
+      // home: BlocProvider(
+      //   create: (context) => MakeCallCubit(getIt<MakeCallRepo>()),
+      //   child: VideoCallHomeScreen(),
+      // ),
     );
   }
 }
