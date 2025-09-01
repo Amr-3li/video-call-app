@@ -1,9 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:vedio_call/core/constants/animations.dart';
-import 'package:vedio_call/presentation/views/widgets/make_call_container.dart';
+import 'package:vedio_call/presentation/views/widgets/background_app.dart';
+import 'package:vedio_call/presentation/views/widgets/create_room_container.dart';
+
+import '../../../core/services/font_size_handeler.dart';
+import '../widgets/row_appbaer.dart';
 
 class VideoCallHomeScreen extends StatelessWidget {
   const VideoCallHomeScreen({super.key});
@@ -11,28 +11,46 @@ class VideoCallHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: LottieBuilder.asset(
-              Animations.background,
-              fit: BoxFit.fitHeight,
-              repeat: true,
-              reverse: true,
-            ),
-          ),
-
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
-            child: Container(
-              color: const Color.fromARGB(255, 201, 201, 201).withOpacity(0.15),
-            ),
-          ),
-          MakeCallContainer(),
-        ],
+      body: BackgroundApp(
+        child: Column(
+          children: [
+            RowAppbar(title: "Home"),
+            CreateRoomContainer(),
+            JoinRoomContainer(),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class JoinRoomContainer extends StatelessWidget {
+  const JoinRoomContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Join Room",
+          style: TextStyle(
+            fontSize: getResposiveSize(context, fontSize: 30),
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 20),
+        TextFormField(
+          onTapUpOutside:  (event) =>  FocusManager.instance.primaryFocus?.unfocus(),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(color: Colors.black, width: 1),
+            ),
+            enabledBorder:  OutlineInputBorder()
+          ),
+        ),
+      ],
     );
   }
 }

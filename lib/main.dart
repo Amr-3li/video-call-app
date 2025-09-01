@@ -7,6 +7,7 @@ import 'package:vedio_call/core/dapendency_injection/get_it.dart';
 import 'package:vedio_call/core/services/sharedpreference_singelton.dart';
 import 'package:vedio_call/firebase_options.dart';
 import 'package:vedio_call/presentation/views/pages/splash_screan.dart';
+import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScrean());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      home: VideoCallHomeScreen(),
+    );
   }
 }

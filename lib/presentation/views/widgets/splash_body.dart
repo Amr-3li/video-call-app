@@ -12,11 +12,13 @@ class SplashBody extends StatelessWidget {
     return Column(
       children: [
         const Spacer(),
-        LottieBuilder.asset(
-          Animations.videoCall,
-          height: MediaQuery.of(context).size.height * 0.2,
-          width: MediaQuery.of(context).size.width * 0.4,
-          fit: BoxFit.cover,
+        RepaintBoundary(
+          child: Lottie.asset(
+            Animations.videoCall,
+            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width * 0.4,
+            fit: BoxFit.cover,
+          ),
         ),
         AnimatedOpacity(
           opacity: opacity,
