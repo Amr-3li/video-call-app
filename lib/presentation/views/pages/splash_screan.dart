@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vedio_call/core/services/animation_of_routs.dart';
+import 'package:vedio_call/presentation/views/pages/login_page.dart';
 import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 import 'package:vedio_call/presentation/views/widgets/splash_body.dart';
 
@@ -32,10 +33,10 @@ class _SplashScreanState extends State<SplashScrean> {
         curve: Curves.easeInCirc,
         child: Center(child: SplashBody(opacity: opacity)),
         onEnd: () async {
-          await Future.delayed(const Duration(seconds: 5));
+          await Future.delayed(const Duration(seconds: 1));
           Navigator.pushReplacement(
             context,
-            PageAnimations.slide(VideoCallHomeScreen()),
+            PageAnimations.fade(LoginPage()),
           );
         },
       ),

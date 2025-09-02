@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 
 class PageAnimations {
   // Fade Animation - Simple fix
-  static PageRouteBuilder fade(Widget page) {
+  static PageRouteBuilder fade(
+    Widget page, {
+    Offset begin = const Offset(1.0, 0.0),
+  }) {
     return PageRouteBuilder(
+      transitionDuration: Duration(milliseconds: 1000),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         // Add CurvedAnimation - this fixes both directions!
         final curvedAnimation = CurvedAnimation(
           parent: animation,
-          curve: Curves.easeInOut,
+          curve: Curves.easeInOutBack,
         );
 
-        return FadeTransition(opacity: curvedAnimation, child: child);
+        final tween = Tween(begin: begin, end: Offset.zero);
+        final offsetAnimation = curvedAnimation.drive(tween);
+        return SlideTransition(position: offsetAnimation, child: child);
       },
     );
   }
