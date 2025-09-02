@@ -1,21 +1,18 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:vedio_call/core/constants/animations.dart';
-import 'package:vedio_call/core/constants/colors.dart';
 import 'package:vedio_call/core/services/font_size_handeler.dart';
 import 'package:vedio_call/presentation/views/widgets/background_app.dart';
-import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 import 'package:vedio_call/presentation/views/widgets/row_appbaer.dart';
+
+import '../widgets/create_room_container.dart';
 
 class VideoCallHomeScreen extends StatelessWidget {
   const VideoCallHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.heightOf(context);
-    double width = MediaQuery.widthOf(context);
+
     return Scaffold(
       body: BackgroundApp(
         child: Column(
