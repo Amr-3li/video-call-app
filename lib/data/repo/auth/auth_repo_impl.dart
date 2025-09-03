@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:vedio_call/core/errors/failures.dart';
+import 'package:vedio_call/data/model/user_model.dart';
 import 'package:vedio_call/data/services/auth/auth_services.dart';
 
 import 'auth_repo.dart';
@@ -10,20 +11,20 @@ class AuthRepoImpl implements AuthRepo {
 
   AuthRepoImpl(this.authServices);
   @override
-  Future<Either<Failure, void>> signIn(String email, String password) async {
+  Future<Either<Failure, UserModel>> signIn(String email, String password) async {
     try {
-      await authServices.signIn(email, password);
-      return right(null);
+     UserModel user= await authServices.signIn(email, password);
+      return right(user);
     } catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, void>> signInWithGoogle() async {
+  Future<Either<Failure, UserModel>> signInWithGoogle() async {
     try {
-      await authServices.signInWithGoogle();
-      return right(null);
+     final user= await authServices.signInWithGoogle();
+      return right(user);
     } catch (e) {
       return left(ServerFailure(e.toString()));
     }

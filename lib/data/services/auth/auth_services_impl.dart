@@ -11,8 +11,13 @@ class AuthServicesImpl implements AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    serverClientId: EndPoints.googleServerId,
+    scopes: ['email', 'profile'],
+  );
+
   @override
-  Future<void> signIn(String email, String password) async {
+  Future<UserModel> signIn(String email, String password) async {
     try {
       final cradintial = await _auth.signInWithEmailAndPassword(
         email: email,
@@ -26,6 +31,7 @@ class AuthServicesImpl implements AuthServices {
 
       await SharedPreferenceSingelton.setString("userId", cradintial.user!.uid);
       await SharedPreferenceSingelton.setString("userName", userData.name);
+      return userData;
     } on FirebaseAuthException catch (e) {
       throw FirebaseExeptionHandler.handleFirebaseAuthError(e);
     } catch (e) {
@@ -33,30 +39,66 @@ class AuthServicesImpl implements AuthServices {
     }
   }
 
-  @override
-  Future<void> signInWithGoogle() async {
+  Future<UserModel> signInWithGoogle() async {
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId: EndPoints.googleClientId, // For web apps
-        serverClientId: EndPoints.googleServerId, // For Android/iOS
-      );
-
-      // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return null;
+        throw ('User cancelled the sign-in process');
       }
-
-      firestore.collection('users').doc(googleUser.id).set({
-        'id': googleUser.id,
-        'name': googleUser.displayName,
-        'email': googleUser.email,
-        'imageUrl': googleUser.photoUrl,
-      });
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final UserCredential userCredential = await _auth.signInWithCredential(
+        credential,
+      );
+      final User? firebaseUser = userCredential.user;
+      if (firebaseUser == null) {
+        throw ('Firebase authentication failed');
+      }
+      final UserModel user = UserModel(
+        id: firebaseUser.uid,
+        email: firebaseUser.email!,
+        name:
+            firebaseUser.displayName ??
+            googleUser.displayName ??
+            'Unknown User',
+      );
+      await _saveUserToFirestore(user);
+      await _saveUserToPreferences(user);
+      return user;
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseExeptionHandler.handleFirebaseAuthError(e);
     } catch (e) {
-      print('Google sign-in error: $e');
-      return null;
+      throw ('Failed to sign in with Google');
+    }
+  }
+
+  Future<void> _saveUserToFirestore(UserModel user) async {
+    try {
+      await firestore
+          .collection('users')
+          .doc(user.id)
+          .set(
+            user.toJson(),
+            SetOptions(merge: true),
+          );
+    } catch (e) {
+      throw ('Failed to save user to database');
+    }
+  }
+
+  Future<void> _saveUserToPreferences(UserModel user) async {
+    try {
+      await Future.wait([
+        SharedPreferenceSingelton.setString("userId", user.id),
+        SharedPreferenceSingelton.setString("userEmail", user.email),
+        SharedPreferenceSingelton.setString("userName", user.name),
+      ]);
+    } catch (e) {
+      ('Failed to save user preferences');
     }
   }
 
