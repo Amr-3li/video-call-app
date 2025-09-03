@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   text: "Sign In",
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         PageAnimations.slide(const VideoCallHomeScreen()),
                       );
