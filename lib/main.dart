@@ -15,15 +15,7 @@ Future<void> main() async {
   setupGetIt();
   SharedPreferenceSingelton.init();
 
-  StreamVideo(
-    EndPoints.abiKey,
-    user: User.regular(
-      userId: EndPoints.userId,
-      role: EndPoints.userRole,
-      name: EndPoints.userName,
-    ),
-    userToken: EndPoints.userToken,
-  );
+
 
   runApp(DevicePreview(builder: (context) => const MyApp()));
 }
