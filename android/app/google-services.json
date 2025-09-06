@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1033471969534:android:64e779b830b53e663c3daf",
+        "mobilesdk_app_id": "1:1033471969534:android:3b689d2b83417f493c3daf",
         "android_client_info": {
           "package_name": "com.example.vedio_call"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1033471969534-i3dv50q4q1bcmo8e0unr7t6e5out2kha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vedio_call",
+            "certificate_hash": "e8646bd37623979958fbc31ff591468d352ff8b8"
+          }
+        },
         {
           "client_id": "1033471969534-ls7lvoo9l9lkurju36ojr8snuako13a5.apps.googleusercontent.com",
           "client_type": 3

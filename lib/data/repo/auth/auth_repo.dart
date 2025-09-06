@@ -5,8 +5,11 @@ import '../../../core/errors/failures.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, UserModel>> signInWithGoogle();
- Future<Either<Failure, UserModel>> signIn(String email, String password);
- Future<Either<Failure, void>> signUp(String email, String password, String name  );
- Future<Either<Failure, void>> signOut();
-
+  Future<Either<Failure, UserModel>> signIn(String email, String password);
+  Future<Either<String, void>> signUp(
+    String email,
+    String password,
+    String name,
+  );
+  Future<Either<String, void>> signOut();
 }

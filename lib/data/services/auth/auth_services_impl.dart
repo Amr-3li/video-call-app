@@ -23,11 +23,14 @@ class AuthServicesImpl implements AuthServices {
         email: email,
         password: password,
       );
+      if (cradintial.user == null) {
+        throw ('User not found');
+      }
       final snapshot = await firestore
           .collection('users')
           .doc(cradintial.user!.uid)
           .get();
-      final userData = UserModel.fromJson(snapshot.data()!);
+      final userData = UserModel.fromJson(snapshot.data() ?? {});
 
       await SharedPreferenceSingelton.setString("userId", cradintial.user!.uid);
       await SharedPreferenceSingelton.setString("userName", userData.name);
@@ -81,10 +84,7 @@ class AuthServicesImpl implements AuthServices {
       await firestore
           .collection('users')
           .doc(user.id)
-          .set(
-            user.toJson(),
-            SetOptions(merge: true),
-          );
+          .set(user.toJson(), SetOptions(merge: true));
     } catch (e) {
       throw ('Failed to save user to database');
     }
@@ -105,22 +105,22 @@ class AuthServicesImpl implements AuthServices {
   @override
   Future<void> signUp(String email, String password, String name) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+    final cradintial =  await _auth.createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
       );
-      final user = _auth.currentUser;
-      final newUser = UserModel(
-        id: user!.uid,
+      if (cradintial.user == null)  return ;
+      final user = UserModel(
+        id: cradintial.user!.uid,
         name: name,
         email: email,
         imageUrl: '',
       );
-      await firestore.collection('users').doc(user.uid).set(newUser.toJson());
+      await firestore.collection('users').doc(user.id).set(user.toJson());
     } on FirebaseAuthException catch (e) {
       throw FirebaseExeptionHandler.handleFirebaseAuthError(e);
     } catch (e) {
-      throw Exception('Failed to sign in');
+      throw 'Failed to sign up';
     }
   }
 

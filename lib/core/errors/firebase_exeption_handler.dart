@@ -10,7 +10,7 @@ class FirebaseExeptionHandler {
       case 'operation-not-allowed':
         return 'This operation is not allowed';
       case 'weak-password':
-        return 'Password should be at least 6 characters';
+        return 'password must have capital/number/special character';
 
       case 'user-not-found':
         return 'No account found with this email';

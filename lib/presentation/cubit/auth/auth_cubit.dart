@@ -27,7 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await authRepo.signUp(email, password, name);
     result.fold(
       (error) {
-        emit(RegisterFailure(error.toString()));
+        emit(RegisterFailure(error));
       },
       (success) {
         emit(RegisterSuccess());

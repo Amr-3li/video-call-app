@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -54,9 +51,20 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCDc_Jnso2iOu0jSdmzk5ID_CrF4nDdb8I',
-    appId: '1:1033471969534:android:64e779b830b53e663c3daf',
+    appId: '1:1033471969534:android:3b689d2b83417f493c3daf',
     messagingSenderId: '1033471969534',
     projectId: 'weighty-droplet-441008-k9',
     storageBucket: 'weighty-droplet-441008-k9.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyABfbMNKXNFRpLUl_W4gF0CxojJQrdp2BM',
+    appId: '1:1033471969534:ios:e75aff21b641708b3c3daf',
+    messagingSenderId: '1033471969534',
+    projectId: 'weighty-droplet-441008-k9',
+    storageBucket: 'weighty-droplet-441008-k9.firebasestorage.app',
+    androidClientId: '1033471969534-i3dv50q4q1bcmo8e0unr7t6e5out2kha.apps.googleusercontent.com',
+    iosClientId: '1033471969534-uhbgo496bg37e1ofjkaovngjeaodtgfv.apps.googleusercontent.com',
+    iosBundleId: 'com.example.vedioCall',
   );
 }

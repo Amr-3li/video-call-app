@@ -11,9 +11,12 @@ class AuthRepoImpl implements AuthRepo {
 
   AuthRepoImpl(this.authServices);
   @override
-  Future<Either<Failure, UserModel>> signIn(String email, String password) async {
+  Future<Either<Failure, UserModel>> signIn(
+    String email,
+    String password,
+  ) async {
     try {
-     UserModel user= await authServices.signIn(email, password);
+      UserModel user = await authServices.signIn(email, password);
       return right(user);
     } catch (e) {
       return left(ServerFailure(e.toString()));
@@ -23,7 +26,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserModel>> signInWithGoogle() async {
     try {
-     final user= await authServices.signInWithGoogle();
+      final user = await authServices.signInWithGoogle();
       return right(user);
     } catch (e) {
       return left(ServerFailure(e.toString()));
@@ -31,17 +34,17 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> signOut() async {
+  Future<Either<String, void>> signOut() async {
     try {
       await authServices.signOut();
       return right(null);
     } catch (e) {
-      return left(ServerFailure(e.toString()));
+      return left(e.toString());
     }
   }
 
   @override
-  Future<Either<Failure, void>> signUp(
+  Future<Either<String, void>> signUp(
     String email,
     String password,
     String name,
@@ -50,7 +53,7 @@ class AuthRepoImpl implements AuthRepo {
       await authServices.signUp(email, password, name);
       return right(null);
     } catch (e) {
-      return left(ServerFailure(e.toString()));
+      return left(e.toString());
     }
   }
 }
