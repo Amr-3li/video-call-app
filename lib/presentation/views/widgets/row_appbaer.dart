@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class RowAppbar extends StatelessWidget {
-  const RowAppbar({super.key, required this.title});
+  const RowAppbar({super.key, required this.title, this.action});
   final String title;
+  final Widget? action;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,7 +17,8 @@ class RowAppbar extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const Spacer(flex: 2),
+        const Spacer(),
+        action ?? SizedBox(),
       ],
     );
   }

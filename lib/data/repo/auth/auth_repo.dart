@@ -12,4 +12,5 @@ abstract class AuthRepo {
     String name,
   );
   Future<Either<String, void>> signOut();
+  Future<Either<String, UserModel>> getCurrentUser();
 }

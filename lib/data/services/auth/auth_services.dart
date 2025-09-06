@@ -5,4 +5,5 @@ abstract class AuthServices {
   Future<void> signOut();
   Future<void> signUp(String email, String password, String name);
   Future<UserModel> signInWithGoogle();
+  Future<UserModel> getCurrentUser();
 }

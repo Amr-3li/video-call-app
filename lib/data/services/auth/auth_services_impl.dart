@@ -105,11 +105,11 @@ class AuthServicesImpl implements AuthServices {
   @override
   Future<void> signUp(String email, String password, String name) async {
     try {
-    final cradintial =  await _auth.createUserWithEmailAndPassword(
+      final cradintial = await _auth.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
-      if (cradintial.user == null)  return ;
+      if (cradintial.user == null) return;
       final user = UserModel(
         id: cradintial.user!.uid,
         name: name,
@@ -134,6 +134,24 @@ class AuthServicesImpl implements AuthServices {
       throw FirebaseExeptionHandler.handleFirebaseAuthError(e);
     } catch (e) {
       throw Exception('Failed to sign in');
+    }
+  }
+
+  @override
+  Future<UserModel> getCurrentUser() async {
+    try {
+      if (_auth.currentUser == null) throw 'User not found';
+      final userid = _auth.currentUser!.uid;
+      final user = await firestore
+          .collection('users')
+          .doc(userid)
+          .get()
+          .then((value) => UserModel.fromJson(value.data()!));
+      return user;
+    } on FirebaseException catch (e) {
+      throw FirebaseExeptionHandler.handleFirebaseFirestoreError(e);
+    } catch (e) {
+      throw Exception('Failed to get current user');
     }
   }
 }

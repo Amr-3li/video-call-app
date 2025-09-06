@@ -56,4 +56,14 @@ class AuthRepoImpl implements AuthRepo {
       return left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, UserModel>> getCurrentUser() async {
+    try {
+     final user=  await authServices.getCurrentUser();
+      return right(user);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
 }
