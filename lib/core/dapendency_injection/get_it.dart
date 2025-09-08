@@ -21,5 +21,4 @@ void setupGetIt() {
   getIt.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(getIt<AuthServices>()),
   );
-
 }

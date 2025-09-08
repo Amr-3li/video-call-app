@@ -60,7 +60,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<String, UserModel>> getCurrentUser() async {
     try {
-     final user=  await authServices.getCurrentUser();
+      final user = await authServices.getCurrentUser();
       return right(user);
     } catch (e) {
       return left(e.toString());

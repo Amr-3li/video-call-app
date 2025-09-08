@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stream_video_flutter/stream_video_flutter.dart';
+import 'package:vedio_call/presentation/views/pages/video_call_home_page.dart';
 
 class CallPage extends StatefulWidget {
   final Call call;
@@ -32,6 +33,31 @@ class _CallPageState extends State<CallPage> {
         onBackPressed: () {
           widget.call.end();
           Navigator.pop(context);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const VideoCallHomeScreen(),
+            ),
+          );
+        },
+        onCancelCallTap: () {
+          widget.call.end();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const VideoCallHomeScreen(),
+            ),
+          );
+        },
+        onCallDisconnected: (call) {
+          print('onCallDisconnected');
+          widget.call.end();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const VideoCallHomeScreen(),
+            ),
+          );
         },
       ),
     );

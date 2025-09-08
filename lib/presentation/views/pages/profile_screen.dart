@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                                              ],
+                      ],
                     );
                   } else {
                     return const Center(child: CircularProgressIndicator());
