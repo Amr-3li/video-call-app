@@ -15,9 +15,63 @@ A modern and interactive video calling application built using **Flutter** and p
 ---
 
 ## 📸 Screenshots
+## 📸 Screenshots
+###  App Register
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="assets/app_images/splash.png" width="200" alt="splash screen">
+        <br><b>splash screen</b>
+      </td>    
+      <td align="center">
+        <img src="assets/app_images/login.png" width="200" alt="SignIn">
+        <br><b>SignIn</b>
+      </td>
+      <td align="center">
+        <img src="assets/app_images/signup.png" width="200" alt="Sign Up">
+        <br><b>Sign Up</b>
+      </td>
+    </tr>   
+  </table>
+</div>
 
- ![alt text](<WhatsApp Image 2025-08-06 at 12.54.52_1cdba2ac.jpg>)
- ![alt text](image.png)
+###  App Features   
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="assets/app_images/home.png" width="200" alt="Home">
+        <br><b>Home Screen</b>
+      </td>
+      <td align="center">
+        <img src="assets/app_images/generateRoom.png" width="200" alt="generate room">
+        <br><b>generate room</b>
+      </td>
+      <td align="center">
+        <img src="assets/app_images/profile.png" width="200" alt="profile">
+        <br><b>profile</b>
+      </td>     
+    </tr>
+  </table>
+</div>
+
+###  Meeting room  
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="assets/app_images/meating.png" width="200" >        
+      </td>
+      <td align="center">
+        <img src="assets/app_images/meating2.png" width="200" >       
+      </td>           
+    </tr>
+     <br><b>generate room</b>
+  </table>
+</div>
+
+
 ---
 
 ## 🛠️ Tech Stack

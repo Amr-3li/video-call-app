@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
-import 'package:vedio_call/presentation/views/widgets/new_meeting_page.dart';
+import 'package:vedio_call/presentation/views/pages/new_meeting_page.dart';
 
 import '../../../core/constants/animations.dart';
 import '../../../core/constants/colors.dart';

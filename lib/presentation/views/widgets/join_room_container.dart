@@ -1,56 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:vedio_call/core/constants/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import 'package:vedio_call/core/services/animation_of_routs.dart';
+import 'package:vedio_call/core/services/permesions_checker.dart';
+import 'package:vedio_call/presentation/cubit/make_call/make_call_cubit.dart';
+import 'package:vedio_call/presentation/views/pages/call_page.dart';
 import 'package:vedio_call/presentation/views/widgets/button_widget.dart';
 
-import '../../../core/services/font_size_handeler.dart';
-
 class JoinRoomContainer extends StatelessWidget {
-  const JoinRoomContainer({super.key});
-
+  const JoinRoomContainer({
+    super.key,
+    required this.formKey,
+    required this.roomIdController,
+  });
+  final GlobalKey<FormState> formKey;
+  final TextEditingController roomIdController;
   @override
   Widget build(BuildContext context) {
-    final TextEditingController roomIdController = TextEditingController();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Join Room",
-          style: TextStyle(
-            fontSize: getResposiveSize(context, fontSize: 30),
-            fontWeight: FontWeight.w900,
-          ),
-        ),
         const SizedBox(height: 20),
-        Container(
-          decoration: BoxDecoration(
-            color: MyColors.iconColor,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.shade300),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.02),
-                blurRadius: 8,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-
-          child: TextField(
-            controller: roomIdController,
-            decoration: const InputDecoration(
-              hintText: 'Enter room ID',
-              hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 16,
-              ),
-            ),
-            style: const TextStyle(fontSize: 16, color: Colors.black),
-          ),
+        BlocConsumer<MakeCallCubit, MakeCallState>(
+          listener: (context, state) {
+            if (state is MakeCallSuccess) {
+              Navigator.push(
+                context,
+                PageAnimations.routeTransition(CallPage(call: state.call)),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is MakeCallLoading) {
+              return const Skeletonizer(child: ButtonWidget(text: "Join"));
+            }
+            return ButtonWidget(
+              text: "Join",
+              onPressed: () async {
+                print("room id ${roomIdController.text}");
+                if (formKey.currentState!.validate()) {
+                  await PermissionsChecker.checkPermissions(context);
+                  await BlocProvider.of<MakeCallCubit>(
+                    context,
+                  ).makeCall(roomIdController.text);
+                }
+              },
+            );
+          },
         ),
-        const SizedBox(height: 20),
-        ButtonWidget(text: "Join", onPressed: () {}),
       ],
     );
   }
